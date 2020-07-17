@@ -47,7 +47,7 @@ fi
 grep -v '#' ../src/models/test_models.txt|tr -d '!' >tmp/models.tmp
 for m in $(cut -f 1 -d ' ' tmp/models.tmp)
 do
-	errmin=100
+	errmin=10000
 	indmin=0
 	for o in $(cat tmp/models.tmp |grep $m|sed  -e 's/\s\+/\ /g'|cut -f 2-100 -d ' ');
 	do
