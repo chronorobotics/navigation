@@ -51,8 +51,8 @@ do
 	indmin=0
 	for o in $(cat tmp/models.tmp |grep $m|sed  -e 's/\s\+/\ /g'|cut -f 2-100 -d ' ');
 	do
-		err=$(cat ../results/$d/$m\_$o.txt|awk 'NR==1{a=0}{a=a+$1}END{print a}')				#change field $2 to $1
-		sm=$(echo $err $errmin|awk '{a=0}($1 > $2){a=1}{print a}')
+		err=$(cat ../results/$d/$m\_$o.txt|head -1|awk 'NR==1{a=0}{a=a+$1}END{print a}')				#change field $2 to $1
+		sm=$(echo $err $errmin|awk '{a=0}($1 >= $2){a=1}{print a}')
 		if [ $sm == 0 ];
 		then
 			errmin=$err
